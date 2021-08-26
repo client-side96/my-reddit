@@ -1,0 +1,23 @@
+ind: pipeline
+name: build
+type: docker
+steps:
+    - name: Install dependencies
+      image: node
+      commands:
+          - npm install
+          - tar -czvf dist.tar.gz ./dist
+    - name: Code style
+      image: node
+      commands:
+          - npm run lint
+          - npm run format
+    # - name: Testing
+    #   image: node
+    #   commands:
+    #       - npm run test
+    - name: Production build
+      image: node
+      commands:
+          - npm run build
+          - tar -czvf build.tar.gz ./build
