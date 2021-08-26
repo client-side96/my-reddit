@@ -1,7 +1,7 @@
 import useAuthorization from './hooks/useAuthorization';
-import useIsUserAuthenticated from './hooks/useIsUserAuthenticated';
+import useAccessToken from './hooks/useAccessToken';
 import AuthenticationProvider, { AuthenticationContext } from './components/AuthenticationProvider';
 
 export type { TokenResponse, AuthorizationParams } from './types';
-export { useAuthorization, useIsUserAuthenticated };
+export { useAuthorization, useAccessToken as useIsUserAuthenticated };
 export { AuthenticationContext, AuthenticationProvider };

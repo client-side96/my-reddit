@@ -1,3 +1,3 @@
-import { useFetchBaseAuth, useFetch } from './useFetch';
+import useFetch from './useFetch';
 
-export { useFetchBaseAuth, useFetch };
+export { useFetch };

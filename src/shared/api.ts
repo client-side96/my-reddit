@@ -1,5 +1,5 @@
 import { Request, RequestMethod, RequestOptions } from '../globalTypes';
-import { OAUTH_URL } from './constants';
+import { API_BASE_URL, OAUTH_URL } from './constants';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const interceptResponseError = (json: any) => {
@@ -63,6 +63,22 @@ export const OAuthApi = <T>(
         body,
         headers,
         authorizationType: 'Bearer',
+    };
+    return provideRequestMethods(url, options);
+};
+
+export const BaseAuthApi = <T>(
+    path: string,
+    token: string,
+    body?: BodyInit,
+    headers?: HeadersInit
+): Request<T> => {
+    const url = API_BASE_URL + path;
+    const options: RequestOptions = {
+        token,
+        body,
+        headers,
+        authorizationType: 'Basic',
     };
     return provideRequestMethods(url, options);
 };

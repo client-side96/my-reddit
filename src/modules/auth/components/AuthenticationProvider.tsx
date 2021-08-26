@@ -1,10 +1,10 @@
 import React from 'react';
-import useIsUserAuthenticated from '../hooks/useIsUserAuthenticated';
+import useAccessToken from '../hooks/useAccessToken';
 
 export const AuthenticationContext = React.createContext<string | null>(null);
 
 const AuthenticationProvider: React.FC = ({ children }) => {
-    const token = useIsUserAuthenticated();
+    const token = useAccessToken();
 
     return (
         <AuthenticationContext.Provider value={token}>{children}</AuthenticationContext.Provider>
