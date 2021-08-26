@@ -1,3 +1,5 @@
+[![Build Status](https://github.clientside.tech/api/badges/client-side96/my-reddit/status.svg)](https://github.clientside.tech/client-side96/my-reddit)
+
 # My Reddit
 
 Watch me building my own Reddit client. :)
