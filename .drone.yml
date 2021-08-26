@@ -6,7 +6,6 @@ steps:
       image: node
       commands:
           - npm install
-          - tar -czvf dist.tar.gz ./dist
     - name: Code style
       image: node
       commands:
