@@ -11,10 +11,10 @@ steps:
       commands:
           - npm run lint
           - npm run format
-    # - name: Testing
-    #   image: node
-    #   commands:
-    #       - npm run test
+    - name: Testing
+      image: node
+      commands:
+          - npm run test
     - name: Production build
       image: node
       commands:

@@ -44,7 +44,7 @@ const requestCallback = <T>(
     return _fetch<T>(url, getDefaultOptions(options));
 };
 
-const provideRequestMethods = <T>(url: string, options: RequestOptions): Request<T> => ({
+export const provideRequestMethods = <T>(url: string, options: RequestOptions): Request<T> => ({
     get: () => requestCallback<T>(url, 'GET', options),
     post: () => requestCallback<T>(url, 'POST', options),
     put: () => requestCallback<T>(url, 'PUT', options),
@@ -64,6 +64,7 @@ export const OAuthApi = <T>(
         headers,
         authorizationType: 'Bearer',
     };
+    console.log(path);
     return provideRequestMethods(url, options);
 };
 
