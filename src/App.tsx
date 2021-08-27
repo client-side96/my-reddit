@@ -1,11 +1,14 @@
 import React from 'react';
+import { RecoilRoot } from 'recoil';
 import AuthenticationProvider from './modules/auth/components/AuthenticationProvider';
-import { Feed } from './modules/feed';
+import { Feed } from './modules/posts';
 
 const App: React.FC = () => {
     return (
         <AuthenticationProvider>
-            <Feed />
+            <RecoilRoot>
+                <Feed />
+            </RecoilRoot>
         </AuthenticationProvider>
     );
 };

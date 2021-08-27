@@ -1,5 +1,3 @@
-import { API_BASE_URL, OAUTH_URL } from './shared/constants';
-
 export type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
 export type RequestOptions = {

@@ -1,19 +1,20 @@
 import React from 'react';
-import { Listing } from '../../../globalTypes';
-import { useFetch } from '../../../hooks';
 import { AuthenticationContext } from '../../auth';
-import { Subreddit, getSubscribedSubreddits } from '../../subreddits';
+import { useSubscribedSubreddits } from '../../subreddits/hooks';
+import { useTopPersonalPosts } from '../hooks';
 
 const Feed: React.FC = () => {
     const token = React.useContext(AuthenticationContext);
-    const mySubreddits = useFetch<Listing<Subreddit>>(getSubscribedSubreddits, token);
+
+    const subscribedSubreddits = useSubscribedSubreddits(token);
+    const topPersonalPosts = useTopPersonalPosts(token, subscribedSubreddits);
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-            {mySubreddits &&
-                mySubreddits.data.children.map((r, index) => (
+            {topPersonalPosts &&
+                topPersonalPosts.map((post, index) => (
                     <div key={`sr-${index}`} style={{ marginBottom: 10 }}>
-                        {r.data.title}
+                        {post.title}
                     </div>
                 ))}
         </div>
