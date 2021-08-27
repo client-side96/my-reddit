@@ -1,5 +1,9 @@
 import React from 'react';
-import { StyledPostPanel } from '../styles/StyledPostPanel';
+import {
+    StyledPostPanel,
+    StyledPostPanelContent,
+    StyledPostPanelTitle,
+} from '../styles/StyledPostPanel';
 import { PostData } from '../types';
 
 type PostPanelProps = {
@@ -7,8 +11,14 @@ type PostPanelProps = {
 };
 
 const PostPanel: React.FC<PostPanelProps> = ({ post }) => {
-    console.log(post);
-    return <StyledPostPanel>{post.title}</StyledPostPanel>;
+    return (
+        <StyledPostPanel>
+            <StyledPostPanelTitle>{post.title}</StyledPostPanelTitle>
+            {post.selftext.length > 0 && (
+                <StyledPostPanelContent>{post.selftext}</StyledPostPanelContent>
+            )}
+        </StyledPostPanel>
+    );
 };
 
 export default PostPanel;
