@@ -9,7 +9,8 @@ import { PostData } from '../types';
 const useTopPersonalPosts = (
     token: string | null,
     subscribedSubreddits: Subreddit[]
-): PostData[] => {
+): [PostData[], boolean] => {
+    const [topPersonalPostsLoading, setTopPersonalPostsLoading] = React.useState(true);
     const topPersonalPosts = useRecoilValue(withTopPersonalPosts);
     const setTopPersonalPosts = useSetRecoilState(withTopPersonalPosts);
 
@@ -19,6 +20,7 @@ const useTopPersonalPosts = (
                 await getTopPersonalPosts(accessToken, subreddits)
             );
             setTopPersonalPosts(response);
+            setTopPersonalPostsLoading(false);
         }
 
         if (token && subscribedSubreddits.length > 0) {
@@ -27,7 +29,7 @@ const useTopPersonalPosts = (
         }
     }, [token, subscribedSubreddits, setTopPersonalPosts]);
 
-    return topPersonalPosts;
+    return [topPersonalPosts, topPersonalPostsLoading];
 };
 
 export default useTopPersonalPosts;

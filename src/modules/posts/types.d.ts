@@ -9,9 +9,13 @@ export type PostData = {
     visited: boolean;
     pinned: boolean;
     ups: number;
+    downs: number;
+    num_comments: number;
     created_utc: number;
 };
 
 export type Post = {
     data: PostData;
 };
+
+export type VoteDirection = -1 | 0 | 1;

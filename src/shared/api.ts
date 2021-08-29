@@ -64,7 +64,6 @@ export const OAuthApi = <T>(
         headers,
         authorizationType: 'Bearer',
     };
-    console.log(path);
     return provideRequestMethods(url, options);
 };
 

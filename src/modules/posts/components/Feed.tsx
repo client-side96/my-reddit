@@ -9,7 +9,10 @@ const Feed: React.FC = () => {
     const token = React.useContext(AuthenticationContext);
 
     const subscribedSubreddits = useSubscribedSubreddits(token);
-    const topPersonalPosts = useTopPersonalPosts(token, subscribedSubreddits);
+    const [topPersonalPosts, topPersonalPostsLoading] = useTopPersonalPosts(
+        token,
+        subscribedSubreddits
+    );
 
     return (
         <div
@@ -19,12 +22,17 @@ const Feed: React.FC = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                padding: '1em',
             }}
         >
-            {topPersonalPosts &&
+            {!topPersonalPostsLoading ? (
+                topPersonalPosts &&
                 _.orderBy(topPersonalPosts, 'ups', 'desc').map((post) => (
                     <PostPanel key={`post-${post.id}`} post={post} />
-                ))}
+                ))
+            ) : (
+                <p>Loading ...</p>
+            )}
         </div>
     );
 };
